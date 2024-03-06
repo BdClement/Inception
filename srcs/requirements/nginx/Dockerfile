@@ -24,5 +24,7 @@ RUN chown -R www-data:www-data /var/www/html
 #Copie du fichier de configuration initial de ngninx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
+#EXPOSE 443
+
 # Lancement de NGINX en premier plan pour que le container ne se stoppe pas
 CMD [ "nginx", "-g", "daemon off;" ]
