@@ -14,7 +14,7 @@ RUN apt install openssl -y
 # -nodes permet d'eviter la demande de mot de passe lors de la creation du certificat
 # -out pour ou se trouvera le certificat et -keyout ou se trouvera la clef
 #RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=clbernar.42.fr/UID=clbernar"
-RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=localhost/UID=clbernar"
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=clbernar.42.fr/UID=clbernar"
 # Creation d'un dossier pour sotcker pour stocker les fichiers de config de NGINX
 RUN mkdir -p /var/run/nginx
 
@@ -23,8 +23,9 @@ RUN chown -R www-data:www-data /var/www/html
 
 #Copie du fichier de configuration initial de ngninx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+#COPY conf/nginx.conf /etc/nginx/sites-available/default
 
-#EXPOSE 443
+EXPOSE 443
 
 # Lancement de NGINX en premier plan pour que le container ne se stoppe pas
 CMD [ "nginx", "-g", "daemon off;" ]
