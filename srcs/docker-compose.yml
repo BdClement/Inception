@@ -43,7 +43,7 @@ services:
       dockerfile: Dockerfile
     depends_on: #WordPress demarrera uniquement apres MariaDB pour pouvoir configurer la bas de donnees
     - mariadb
-    restart: on failure 
+    restart: on-failure 
     expose:
     - "9000"
 

@@ -16,4 +16,6 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 COPY /conf/php.ini /etc/php/7.4/cli/php.ini
 COPY /tools/auto-config.sh /scripts/auto-config.sh
 
+EXPOSE 9000
+
 CMD ["bash", "/scripts/auto-config.sh"]

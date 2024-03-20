@@ -32,8 +32,9 @@ socket = /run/mysqld/mysqld.sock
 port = 3306
 bind_address=*
 datadir=/var/lib/mysql
-user='$MYSQL_USER'
-#user=mysql
+#user='$MYSQL_USER'
+socket = /run/mysqld/mysqld.sock
+user=mysql
 
 log_error=/var/log/mysql/error.log
 general_log_file=/var/log/mysql/mysql.log
