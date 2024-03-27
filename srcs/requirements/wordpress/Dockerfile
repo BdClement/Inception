@@ -1,6 +1,7 @@
 FROM debian:bullseye
 
 RUN apt-get update && apt-get upgrade
+RUN apt-get -y install vim 
 RUN apt-get -y install wget
 RUN apt-get install -y php7.3 \
 php-fpm \
@@ -13,7 +14,8 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar 
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-COPY /conf/php.ini /etc/php/7.4/cli/php.ini
+#COPY /conf/php.ini /etc/php/7.4/fpm/php.ini
+COPY /conf/www.conf /etc/php/7.4/fpm/pool.d
 COPY /tools/auto-config.sh /scripts/auto-config.sh
 
 EXPOSE 9000
